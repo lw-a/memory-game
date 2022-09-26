@@ -9,6 +9,16 @@ function App() {
       <div className='game'>
       <Card />
       <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       </div>
     </div>
   );
