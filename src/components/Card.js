@@ -1,5 +1,5 @@
-import '../styles/card.css';
 import React, { useState } from 'react';
+import '../styles/card.css';
 
 const Card = (props) => {
 	const [flipped, setFlipped] = useState(false);

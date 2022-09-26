@@ -1,0 +1,5 @@
+.game {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, 150px);
+}
