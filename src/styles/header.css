@@ -1,0 +1,26 @@
+header {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+h1 {
+  margin: 6px 0px;
+}
+
+.scores {
+  width: 100%;
+	display: flex;
+	justify-content: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+p {
+  margin: 0px;
+}
+
+.note {
+  margin: 0px;
+  font-size: 12px;
+}
