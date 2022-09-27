@@ -6,7 +6,6 @@ import './styles/app.css';
 
 function App() {
 
-
   function shuffle(array) {
 
     let doubled = [];
@@ -32,24 +31,26 @@ function App() {
   }
 
 	const handleClick = (card) => {
-		if (!pair.current.cardOne) {
-			pair.current.cardOne = card
-			return true
-		} else if (!pair.current.cardTwo) {
-			pair.current.cardTwo = card
-      if (pair.current.cardOne.colour === pair.current.cardTwo.colour) {
-				pair.current.cardOne = null;
-				pair.current.cardTwo = null;
-			} else {
-        setTimeout(() => {
-          pair.current.cardOne.element.classList.remove('flipped')
-          pair.current.cardTwo.element.classList.remove('flipped')
+    if (card.element.classList.value === 'card') {
+      if (!pair.current.cardOne) {
+        pair.current.cardOne = card
+        return true
+      } else if (!pair.current.cardTwo) {
+        pair.current.cardTwo = card
+        if (pair.current.cardOne.colour === pair.current.cardTwo.colour && pair.current.cardOne.id !== pair.current.cardTwo.id) {
           pair.current.cardOne = null;
           pair.current.cardTwo = null;
-        }, 1000)
+        } else {
+          setTimeout(() => {
+            pair.current.cardOne.element.classList.remove('flipped')
+            pair.current.cardTwo.element.classList.remove('flipped')
+            pair.current.cardOne = null;
+            pair.current.cardTwo = null;
+          }, 1000)
+        }
+        return true
       }
-			return true
-		}
+    }
 		return false
 	}
 
@@ -60,8 +61,6 @@ function App() {
   })
 
   const pair = useRef({ cardOne: null, cardTwo: null })
-
-
 
   return (
     <div className="App">

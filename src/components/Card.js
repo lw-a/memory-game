@@ -17,7 +17,7 @@ const Card = (props) => {
 
 	return (
 		<div
-			className={`card`} onClick={handleClick}>
+			className='card' onClick={handleClick}>
 			<div className='inner'>
 				<div className='card-front' style={{backgroundColor: props.colour}}>Front</div>
 				<div className='card-back'>Back</div>
