@@ -1,10 +1,11 @@
 import Header from './components/Header';
 import Card from './components/Card';
+import uniqid from 'uniqid';
 import './styles/app.css';
 
 function App() {
 
-  let cardContent = [1, 2, 3, 4, 5, 6]
+  const cardContent = [1, 2, 3, 4, 5, 6]
 
   function shuffle(array) {
 
