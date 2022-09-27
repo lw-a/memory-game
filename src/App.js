@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Card from './components/Card';
+import EndScreen from './components/EndScreen';
 import uniqid from 'uniqid';
 import { useRef, useState, useEffect } from 'react';
 import './styles/app.css';
@@ -10,6 +11,7 @@ function App() {
   const [cards, setCards] = useState([])
   const [bestScore, setBestScore] = useState(0)
   let [playAgain, setPlayAgain] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     setCards(() => {
@@ -55,6 +57,13 @@ function App() {
         if (pair.current.cardOne.colour === pair.current.cardTwo.colour && pair.current.cardOne.id !== pair.current.cardTwo.id) {
           pair.current.cardOne = null;
           pair.current.cardTwo = null;
+          pair.current.sets += 1
+          console.log(`${pair.current.sets} SETS`)
+          if (pair.current.sets === cardValues.length) {
+						setGameOver(true)
+            console.log("GAME OVER")
+          if (moves < bestScore || bestScore === 0) setBestScore(moves)
+          }
         } else {
           setTimeout(() => {
             pair.current.cardOne.element.classList.remove('flipped')
@@ -71,24 +80,20 @@ function App() {
 	}
 
   const cardValues = ['green', 'yellow', 'purple', 'orange', 'pink', 'grey']
+  console.log(`${cardValues.length} LENGTH`)
 
-  const pair = useRef({ cardOne: null, cardTwo: null })
+
+  const pair = useRef({ cardOne: null, cardTwo: null, sets: 0 })
+  console.log(`${pair.current.sets} SETS`)
+
+  let endScreen = gameOver ? <EndScreen moves={moves} playAgain={setPlayAgain}/> : null
+  console.log(endScreen)
 
   return (
     <div className="App">
       <Header moves={moves} top={bestScore}/>
-      <div className='game'>
-        {cards}
-      </div>
-      <button
-				className='resetbtn'
-				onClick={() => {
-					setPlayAgain((prevState) => !prevState)
-          if (moves < bestScore || bestScore === 0) setBestScore(moves)
-          setMoves(0)
-				}}>
-				Play Again
-			</button>
+      {endScreen}
+      <div className='game'>{cards}</div>
     </div>
   );
 }
