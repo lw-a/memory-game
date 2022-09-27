@@ -5,7 +5,6 @@ import './styles/app.css';
 
 function App() {
 
-  const cardContent = [1, 2, 3, 4, 5, 6]
 
   function shuffle(array) {
 
@@ -31,22 +30,17 @@ function App() {
     return shuffled;
   }
 
+  const cardValues = ['green', 'yellow', 'purple']
+  const cards = shuffle(cardValues).map((colour) => {
+    const id = uniqid();
+    return <Card colour={colour} key={id} id={id}/>
+  })
+
   return (
     <div className="App">
       <Header />
       <div className='game'>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+        {cards}
       </div>
     </div>
   );

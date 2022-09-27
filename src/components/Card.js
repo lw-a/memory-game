@@ -12,7 +12,7 @@ const Card = (props) => {
 		<div
 			className={`card ${flipped ? 'flipped' : null}`} onClick={handleClick}>
 			<div className='inner'>
-				<div className='card-front'>Front</div>
+				<div className='card-front' style={{backgroundColor: props.colour}}>Front</div>
 				<div className='card-back'>Back</div>
 			</div>
 		</div>
