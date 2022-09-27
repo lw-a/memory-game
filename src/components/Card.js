@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import '../styles/card.css';
 
 const Card = (props) => {
-	// const [flipped, setFlipped] = useState(false);
 
 	const handleClick = (event) => {
       if (
         props.handleClick({
           id: props.id,
+          colour: props.colour,
           element: event.target.parentElement.parentElement,
         })
       ) {
