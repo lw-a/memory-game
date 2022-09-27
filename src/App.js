@@ -19,6 +19,9 @@ function App() {
         const id = uniqid();
         return <Card colour={colour} key={id} id={id} handleClick={handleClick}/>
       })
+      if (moves < bestScore || bestScore === 0) setBestScore(moves)
+      setMoves(0)
+      setGameOver(false)
       return array
     })
   }, [playAgain])
@@ -51,18 +54,18 @@ function App() {
     if (card.element.classList.value === 'card') {
       if (!pair.current.cardOne) {
         pair.current.cardOne = card
+
         return true
       } else if (!pair.current.cardTwo) {
         pair.current.cardTwo = card
+
         if (pair.current.cardOne.colour === pair.current.cardTwo.colour && pair.current.cardOne.id !== pair.current.cardTwo.id) {
           pair.current.cardOne = null;
           pair.current.cardTwo = null;
           pair.current.sets += 1
-          console.log(`${pair.current.sets} SETS`)
           if (pair.current.sets === cardValues.length) {
 						setGameOver(true)
-            console.log("GAME OVER")
-          if (moves < bestScore || bestScore === 0) setBestScore(moves)
+            pair.current.sets = 0
           }
         } else {
           setTimeout(() => {
@@ -80,14 +83,10 @@ function App() {
 	}
 
   const cardValues = ['green', 'yellow', 'purple', 'orange', 'pink', 'grey']
-  console.log(`${cardValues.length} LENGTH`)
-
 
   const pair = useRef({ cardOne: null, cardTwo: null, sets: 0 })
-  console.log(`${pair.current.sets} SETS`)
 
   let endScreen = gameOver ? <EndScreen moves={moves} playAgain={setPlayAgain}/> : null
-  console.log(endScreen)
 
   return (
     <div className="App">
