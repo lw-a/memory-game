@@ -2,15 +2,22 @@ import React, { useState } from 'react';
 import '../styles/card.css';
 
 const Card = (props) => {
-	const [flipped, setFlipped] = useState(false);
+	// const [flipped, setFlipped] = useState(false);
 
-	const handleClick = (e) => {
-    if (props.handleClick(props.id)) setFlipped((prevState) => !prevState);
-	}
+	const handleClick = (event) => {
+      if (
+        props.handleClick({
+          id: props.id,
+          element: event.target.parentElement.parentElement,
+        })
+      ) {
+        event.target.parentElement.parentElement.classList.add('flipped');
+      }
+  	}
 
 	return (
 		<div
-			className={`card ${flipped ? 'flipped' : null}`} onClick={handleClick}>
+			className={`card`} onClick={handleClick}>
 			<div className='inner'>
 				<div className='card-front' style={{backgroundColor: props.colour}}>Front</div>
 				<div className='card-back'>Back</div>

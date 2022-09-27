@@ -33,13 +33,19 @@ function App() {
 
 	const handleClick = (card) => {
 		if (!pair.current.cardOne) {
-			pair.current.cardOne = card;
-			return true;
+			pair.current.cardOne = card
+			return true
 		} else if (!pair.current.cardTwo) {
-			pair.current.cardTwo = card;
-			return true;
+			pair.current.cardTwo = card
+      setTimeout(() => {
+				pair.current.cardOne.element.classList.remove('flipped')
+				pair.current.cardTwo.element.classList.remove('flipped')
+        pair.current.cardOne = null;
+        pair.current.cardTwo = null;
+			}, 1000)
+			return true
 		}
-		return false;
+		return false
 	}
 
   const cardValues = ['green', 'yellow', 'purple', 'orange', 'pink', 'grey']
