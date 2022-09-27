@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import Card from './components/Card';
 import uniqid from 'uniqid';
+import { useRef } from 'react';
 import './styles/app.css';
 
 function App() {
@@ -30,11 +31,26 @@ function App() {
     return shuffled;
   }
 
-  const cardValues = ['green', 'yellow', 'purple']
+	const handleClick = (card) => {
+		if (!pair.current.cardOne) {
+			pair.current.cardOne = card;
+			return true;
+		} else if (!pair.current.cardTwo) {
+			pair.current.cardTwo = card;
+			return true;
+		}
+		return false;
+	}
+
+  const cardValues = ['green', 'yellow', 'purple', 'orange', 'pink', 'grey']
   const cards = shuffle(cardValues).map((colour) => {
     const id = uniqid();
-    return <Card colour={colour} key={id} id={id}/>
+    return <Card colour={colour} key={id} id={id} handleClick={handleClick}/>
   })
+
+  const pair = useRef({ cardOne: null, cardTwo: null })
+
+
 
   return (
     <div className="App">
