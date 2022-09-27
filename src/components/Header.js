@@ -1,11 +1,11 @@
 import '../styles/header.css';
 
-const Header = () => {
+const Header = (props) => {
   return(
     <header>
       <h1>Concentration</h1>
       <div className='scores'>
-        <p>Moves: 0</p>
+        <p>Moves: {props.moves}</p>
         <p>Best Score: 0</p>
       </div>
       <p className='note'>(Lower is better!)</p>

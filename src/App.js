@@ -1,10 +1,23 @@
 import Header from './components/Header';
 import Card from './components/Card';
 import uniqid from 'uniqid';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './styles/app.css';
 
 function App() {
+
+  const [moves, setMoves] = useState(0)
+  const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    setCards(() => {
+      const array = shuffle(cardValues).map((colour) => {
+        const id = uniqid();
+        return <Card colour={colour} key={id} id={id} handleClick={handleClick}/>
+      })
+      return array
+    })
+  }, [])
 
   function shuffle(array) {
 
@@ -48,6 +61,7 @@ function App() {
             pair.current.cardTwo = null;
           }, 1000)
         }
+        setMoves((moves) => moves + 1)
         return true
       }
     }
@@ -55,16 +69,14 @@ function App() {
 	}
 
   const cardValues = ['green', 'yellow', 'purple', 'orange', 'pink', 'grey']
-  const cards = shuffle(cardValues).map((colour) => {
-    const id = uniqid();
-    return <Card colour={colour} key={id} id={id} handleClick={handleClick}/>
-  })
+
+
 
   const pair = useRef({ cardOne: null, cardTwo: null })
 
   return (
     <div className="App">
-      <Header />
+      <Header moves={moves}/>
       <div className='game'>
         {cards}
       </div>
