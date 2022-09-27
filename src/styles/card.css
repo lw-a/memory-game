@@ -31,4 +31,5 @@
 .card-back {
   background-color: blue;
 	color: white;
+  cursor: pointer;
 }

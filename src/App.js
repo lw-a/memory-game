@@ -8,6 +8,8 @@ function App() {
 
   const [moves, setMoves] = useState(0)
   const [cards, setCards] = useState([])
+  const [bestScore, setBestScore] = useState(0)
+  let [playAgain, setPlayAgain] = useState(true);
 
   useEffect(() => {
     setCards(() => {
@@ -17,7 +19,7 @@ function App() {
       })
       return array
     })
-  }, [])
+  }, [playAgain])
 
   function shuffle(array) {
 
@@ -70,16 +72,23 @@ function App() {
 
   const cardValues = ['green', 'yellow', 'purple', 'orange', 'pink', 'grey']
 
-
-
   const pair = useRef({ cardOne: null, cardTwo: null })
 
   return (
     <div className="App">
-      <Header moves={moves}/>
+      <Header moves={moves} top={bestScore}/>
       <div className='game'>
         {cards}
       </div>
+      <button
+				className='resetbtn'
+				onClick={() => {
+					setPlayAgain((prevState) => !prevState)
+          if (moves < bestScore || bestScore === 0) setBestScore(moves)
+          setMoves(0)
+				}}>
+				Play Again
+			</button>
     </div>
   );
 }
