@@ -1,3 +1,4 @@
+import '../styles/endScreen.css';
 
 const EndScreen = (props) => {
   return (
