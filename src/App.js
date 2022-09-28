@@ -1,6 +1,6 @@
-import Header from './components/Header';
-import Card from './components/Card';
-import EndScreen from './components/EndScreen';
+import Header from './Components/Header';
+import Card from './Components/Card';
+import EndScreen from './Components/EndScreen';
 import uniqid from 'uniqid';
 import { useRef, useState, useEffect } from 'react';
 import './styles/app.css';
