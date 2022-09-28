@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import '../styles/card.css';
 
 const Card = (props) => {
@@ -19,8 +18,8 @@ const Card = (props) => {
 		<div
 			className='card' onClick={handleClick}>
 			<div className='inner'>
-				<div className='card-front' style={{backgroundColor: props.colour}}>Front</div>
-				<div className='card-back'>Back</div>
+				<div className='card-front' style={{backgroundColor: props.colour}}></div>
+				<div className='card-back'>♥️</div>
 			</div>
 		</div>
 	)

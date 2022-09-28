@@ -5,11 +5,14 @@
   justify-content: center;
   gap: 6px;
   margin-top: 6px;
+  color: rgb(98, 98, 98);
 }
 
 .resetbtn {
   cursor: pointer;
   padding: 6px 10px;
   border: 1px solid;
+  border-color: rgb(98, 98, 98);
   background-color: inherit;
+  color: rgb(98, 98, 98);
 }

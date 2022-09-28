@@ -2,7 +2,10 @@ header {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-  background-color: lightslategray;
+  background-color: #FFD1D1;
+  padding-bottom: 12px;
+  margin-bottom: 6px;
+  color: rgb(98, 98, 98);
 }
 
 h1 {

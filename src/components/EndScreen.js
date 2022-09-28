@@ -3,7 +3,8 @@ import '../styles/endScreen.css';
 const EndScreen = (props) => {
   return (
     <div className='gameOver'>
-    <p>Congrats, you beat the game in {props.moves} moves!</p>
+    <p>🎉Congratulations!🎉</p>
+    <p>You beat the game in {props.moves} moves! 😊</p>
     <button className='resetbtn' onClick={() => {
         props.playAgain((prevState) => !prevState)
       }}>

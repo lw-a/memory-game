@@ -14,6 +14,8 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
+    pair.current.sets = 0
+
     setCards(() => {
       const array = shuffle(cardValues).map((colour) => {
         const id = uniqid();
@@ -65,7 +67,6 @@ function App() {
           pair.current.sets += 1
           if (pair.current.sets === cardValues.length) {
 						setGameOver(true)
-            pair.current.sets = 0
           }
         } else {
           setTimeout(() => {
@@ -82,7 +83,7 @@ function App() {
 		return false
 	}
 
-  const cardValues = ['green', 'yellow', 'purple', 'orange', 'pink', 'grey']
+  const cardValues = ['#C8F69B', '#FFF291', '#FFD576', '#FFD5EC', '#D6D4FF', '#B2F0F0']
 
   const pair = useRef({ cardOne: null, cardTwo: null, sets: 0 })
 
